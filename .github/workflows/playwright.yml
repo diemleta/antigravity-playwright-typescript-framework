@@ -1,0 +1,123 @@
+name: 🎭 Playwright E2E Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: E2E Tests — Playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    env:
+      # Load from GitHub Secrets (Settings > Secrets and variables > Actions)
+      BASE_URL: ${{ secrets.BASE_URL }}
+      TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+
+    steps:
+      # ─────────────────────────────────────────
+      # 1. Checkout code
+      # ─────────────────────────────────────────
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      # ─────────────────────────────────────────
+      # 2. Setup Node.js
+      # ─────────────────────────────────────────
+      - name: 🟢 Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ─────────────────────────────────────────
+      # 3. Install dependencies
+      # ─────────────────────────────────────────
+      - name: 📥 Install NPM dependencies
+        run: npm ci
+
+      # ─────────────────────────────────────────
+      # 4. Install Playwright browsers
+      # ─────────────────────────────────────────
+      - name: 🎭 Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # ─────────────────────────────────────────
+      # 5. TypeScript type check
+      # ─────────────────────────────────────────
+      - name: 🔍 TypeScript type check
+        run: npm run typecheck
+
+      # ─────────────────────────────────────────
+      # 6. Run E2E tests (headless on CI)
+      # ─────────────────────────────────────────
+      - name: 🧪 Run Playwright tests
+        run: npx playwright test
+        env:
+          CI: true
+
+      # ─────────────────────────────────────────
+      # 7. Upload HTML Report as artifact
+      # ─────────────────────────────────────────
+      - name: 📊 Upload Playwright HTML Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ github.run_number }}
+          path: playwright-report/
+          retention-days: 30
+
+      # ─────────────────────────────────────────
+      # 8. Load Allure history
+      # ─────────────────────────────────────────
+      - name: 📂 Load Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      # ─────────────────────────────────────────
+      # 9. Generate Allure Report
+      # ─────────────────────────────────────────
+      - name: 📊 Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      # ─────────────────────────────────────────
+      # 10. Deploy Allure Report to GitHub Pages
+      # ─────────────────────────────────────────
+      - name: 🚀 Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      # ─────────────────────────────────────────
+      # 11. Upload raw test-results on failure
+      # ─────────────────────────────────────────
+      - name: 📸 Upload test-results on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results-${{ github.run_number }}
+          path: test-results/
+          retention-days: 7

@@ -1,0 +1,34 @@
+{
+  "name": "playwright-typescript-framework",
+  "version": "1.0.0",
+  "description": "E2E Web UI Automation Framework — Playwright + TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:auth": "playwright test tests/auth/",
+    "test:dashboard": "playwright test tests/dashboard/",
+    "allure:clean": "node -e \"const fs = require('fs'); ['allure-results', 'allure-report'].forEach(d => fs.rmSync(d, { recursive: true, force: true }))\"",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "test:allure": "npm run allure:clean && npm run test || npm run allure:generate && npm run allure:open",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "allure-commandline": "^2.42.0",
+    "allure-playwright": "^3.9.0",
+    "dotenv": "^16.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

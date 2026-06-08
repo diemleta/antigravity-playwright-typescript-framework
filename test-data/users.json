@@ -1,0 +1,23 @@
+[
+  {
+    "id": "user_001",
+    "username": "admin@example.com",
+    "password": "Admin@123",
+    "role": "admin",
+    "description": "Valid admin account"
+  },
+  {
+    "id": "user_invalid_001",
+    "username": "admin@example.com",
+    "password": "WrongPassword",
+    "role": "admin",
+    "description": "Invalid credentials — wrong password"
+  },
+  {
+    "id": "user_invalid_002",
+    "username": "notexist@example.com",
+    "password": "Admin@123",
+    "role": null,
+    "description": "Invalid credentials — non-existent user"
+  }
+]

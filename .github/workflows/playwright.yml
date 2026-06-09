@@ -87,7 +87,7 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: gh-pages
+          path: allure-history
 
       # ─────────────────────────────────────────
       # 9. Generate Allure Report
@@ -104,7 +104,7 @@ jobs:
       # 10. Deploy Allure Report to GitHub Pages
       # ─────────────────────────────────────────
       - name: 🚀 Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

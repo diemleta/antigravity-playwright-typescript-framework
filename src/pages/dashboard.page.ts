@@ -15,8 +15,8 @@ export class DashboardPage extends BasePage {
   /** <a class="profile"> — góc trên phải */
   readonly userProfileLink = this.page.locator('a.profile');
 
-  /** <li class="header-logout"><a ...>Logout</a></li> */
-  readonly logoutLink = this.page.locator('li.header-logout > a');
+  /** <li class="header-logout"><a ...>Logout</a></li> — visible desktop header only */
+  readonly logoutLink = this.page.locator('li.header-logout > a:visible');
 
   /** H1 heading */
   readonly pageHeading = this.page.getByRole('heading', { level: 1 });

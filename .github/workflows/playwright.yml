@@ -48,19 +48,36 @@ jobs:
         run: npm ci
 
       # ─────────────────────────────────────────
-      # 4. Install Playwright browsers
+      # 4. Cache Playwright Browsers
       # ─────────────────────────────────────────
-      - name: 🎭 Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+      - name: 💾 Cache Playwright Browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
       # ─────────────────────────────────────────
-      # 5. TypeScript type check
+      # 5. Install Playwright browsers & dependencies
+      # ─────────────────────────────────────────
+      - name: 🎭 Install Playwright browsers & dependencies
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: 🎭 Install Playwright system dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      # ─────────────────────────────────────────
+      # 6. TypeScript type check
       # ─────────────────────────────────────────
       - name: 🔍 TypeScript type check
         run: npm run typecheck
 
       # ─────────────────────────────────────────
-      # 6. Run E2E tests (headless on CI)
+      # 7. Run E2E tests (headless on CI)
       # ─────────────────────────────────────────
       - name: 🧪 Run Playwright tests
         run: npm run test
@@ -68,7 +85,7 @@ jobs:
           CI: true
 
       # ─────────────────────────────────────────
-      # 7. Upload HTML Report as artifact
+      # 8. Upload HTML Report as artifact
       # ─────────────────────────────────────────
       - name: 📊 Upload Playwright HTML Report
         uses: actions/upload-artifact@v4
@@ -79,7 +96,7 @@ jobs:
           retention-days: 30
 
       # ─────────────────────────────────────────
-      # 8. Load Allure history
+      # 9. Load Allure history
       # ─────────────────────────────────────────
       - name: 📂 Load Allure history
         uses: actions/checkout@v4
@@ -90,7 +107,7 @@ jobs:
           path: allure-history
 
       # ─────────────────────────────────────────
-      # 9. Generate Allure Report
+      # 10. Generate Allure Report
       # ─────────────────────────────────────────
       - name: 📊 Generate Allure Report
         uses: simple-elf/allure-report-action@master
@@ -101,7 +118,7 @@ jobs:
           keep_reports: 20
 
       # ─────────────────────────────────────────
-      # 10. Deploy Allure Report to GitHub Pages
+      # 11. Deploy Allure Report to GitHub Pages
       # ─────────────────────────────────────────
       - name: 🚀 Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -113,7 +130,7 @@ jobs:
           force_orphan: true
 
       # ─────────────────────────────────────────
-      # 11. Upload raw test-results on failure
+      # 12. Upload raw test-results on failure
       # ─────────────────────────────────────────
       - name: 📸 Upload test-results on failure
         uses: actions/upload-artifact@v4

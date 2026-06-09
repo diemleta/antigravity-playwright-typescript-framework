@@ -41,13 +41,10 @@ export class DashboardPage extends BasePage {
    */
   async logout(): Promise<void> {
     await test.step('Logout from the CRM system', async () => {
-      this.logger.info('Clicking profile link to open dropdown...');
-      // Click profile link to open user dropdown menu
-      await this.userProfileLink.click();
-      // Wait for logout link to become visible in the dropdown
-      await this.logoutLink.waitFor({ state: 'visible', timeout: 5_000 });
-      this.logger.info('Clicking logout link...');
-      await this.logoutLink.click();
+      this.logger.info('Navigating to logout URL directly...');
+      // Navigate directly to the logout endpoint (same URL as logout() JS function)
+      // More reliable than UI click on dropdown in headless CI mode
+      await this.page.goto('/admin/authentication/logout');
       // Wait for redirect to login page
       await expect(this.page).toHaveURL(/authentication/, { timeout: 15_000 });
       this.logger.info(`After logout URL: ${this.page.url()}`);

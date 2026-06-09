@@ -110,6 +110,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+          force_orphan: true
 
       # ─────────────────────────────────────────
       # 11. Upload raw test-results on failure

@@ -4,6 +4,7 @@
  */
 
 import { test, expect } from '../../fixtures/base.fixture';
+import { ENV } from '../../utils/env.config';
 
 test.describe('Logout — TC_023~TC_024', () => {
   test.use({ storageState: { cookies: [], origins: [] } });
@@ -14,7 +15,7 @@ test.describe('Logout — TC_023~TC_024', () => {
   test('TC_023: Đăng xuất từ Dashboard → chuyển về trang Login', async ({ loginPage, dashboardPage, page }) => {
     // Arrange — Đăng nhập trước
     await loginPage.goto();
-    await loginPage.login('admin@example.com', '123456');
+    await loginPage.login(ENV.username, ENV.password);
     await expect(page).toHaveURL(/\/admin\//, { timeout: 15_000 });
 
     expect(
@@ -43,7 +44,7 @@ test.describe('Logout — TC_023~TC_024', () => {
   test('TC_024: Sau logout, nhấn Back → không quay lại được Dashboard', async ({ loginPage, dashboardPage, page }) => {
     // Arrange — Đăng nhập và logout
     await loginPage.goto();
-    await loginPage.login('admin@example.com', '123456');
+    await loginPage.login(ENV.username, ENV.password);
     await expect(page).toHaveURL(/\/admin\//, { timeout: 15_000 });
 
     expect(
@@ -61,7 +62,6 @@ test.describe('Logout — TC_023~TC_024', () => {
     // Act — Nhấn nút Back của trình duyệt
     await page.goBack();
     await page.waitForLoadState('domcontentloaded');
-    await page.waitForTimeout(1500);
 
     // Assert — Phải ở trang Login (session đã hủy, không thể quay lại Dashboard)
     const urlAfterBack = page.url();

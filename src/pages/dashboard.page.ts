@@ -41,13 +41,14 @@ export class DashboardPage extends BasePage {
    */
   async logout(): Promise<void> {
     await test.step('Logout from the CRM system', async () => {
-      this.logger.info('Logging out via JavaScript...');
-      await this.page.evaluate(() => {
-        // CRM uses onclick="logout(); return false;"
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any)['logout']();
-      });
-      // Chờ redirect về trang login
+      this.logger.info('Clicking profile link to open dropdown...');
+      // Click profile link to open user dropdown menu
+      await this.userProfileLink.click();
+      // Wait for logout link to become visible in the dropdown
+      await this.logoutLink.waitFor({ state: 'visible', timeout: 5_000 });
+      this.logger.info('Clicking logout link...');
+      await this.logoutLink.click();
+      // Wait for redirect to login page
       await expect(this.page).toHaveURL(/authentication/, { timeout: 15_000 });
       this.logger.info(`After logout URL: ${this.page.url()}`);
     });

@@ -1,0 +1,6 @@
+[2026-06-09T06:56:20.371Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T06:56:21.887Z] [INFO] [LoginPage] Logging in as: admin@example.com
+[2026-06-09T06:56:21.895Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T06:56:22.003Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T06:56:22.088Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T06:56:24.146Z] [INFO] [DashboardPage] Dashboard check — URL: 'https://crm.anhtester.com/admin/', Menu visible: true

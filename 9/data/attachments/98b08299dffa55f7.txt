@@ -1,0 +1,4 @@
+[2026-06-09T07:11:59.213Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T07:12:01.620Z] [INFO] [LoginPage] Action: fill "<script>alert('XSS')</script>" | Target: Email input
+[2026-06-09T07:12:01.639Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:12:01.654Z] [INFO] [LoginPage] Action: click | Target: Login button

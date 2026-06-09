@@ -1,0 +1,5 @@
+[2026-06-09T07:11:40.701Z] [INFO] [ForgotPasswordPage] Navigating to: /admin/authentication/forgot_password
+[2026-06-09T07:11:43.140Z] [INFO] [ForgotPasswordPage] Action: fill "********" | Target: Forgot Password Email input
+[2026-06-09T07:11:43.163Z] [INFO] [ForgotPasswordPage] Action: click | Target: Confirm button
+[TC_019] App error (có thể do SMTP): 
+        Error setting new password      

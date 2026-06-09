@@ -1,0 +1,4 @@
+[2026-06-09T07:11:48.937Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T07:11:51.263Z] [INFO] [LoginPage] Action: fill "" | Target: Email input
+[2026-06-09T07:11:51.281Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:11:51.297Z] [INFO] [LoginPage] Action: click | Target: Login button

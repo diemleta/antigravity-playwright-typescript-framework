@@ -1,0 +1,2 @@
+[2026-06-09T06:56:27.995Z] [INFO] [ForgotPasswordPage] Navigating to: /admin/authentication/forgot_password
+[2026-06-09T06:56:30.150Z] [INFO] [ForgotPasswordPage] Action: click | Target: Confirm button

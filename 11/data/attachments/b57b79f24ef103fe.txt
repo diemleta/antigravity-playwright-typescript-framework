@@ -1,0 +1,8 @@
+[2026-06-09T07:31:40.026Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T07:31:42.566Z] [INFO] [LoginPage] Logging in as: admin@example.com
+[2026-06-09T07:31:42.567Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:31:42.589Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:31:42.608Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:31:44.369Z] [INFO] [DashboardPage] Dashboard check — URL: 'https://crm.anhtester.com/admin/', Menu visible: true
+[2026-06-09T07:31:44.370Z] [INFO] [DashboardPage] Navigating to logout URL directly...
+[2026-06-09T07:31:45.452Z] [INFO] [DashboardPage] After logout URL: https://crm.anhtester.com/admin/authentication

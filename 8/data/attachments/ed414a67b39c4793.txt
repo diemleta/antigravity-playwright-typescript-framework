@@ -1,0 +1,2 @@
+[2026-06-09T06:57:08.278Z] [INFO] [DashboardPage] Navigating to: /admin/
+[2026-06-09T06:57:12.329Z] [INFO] [DashboardPage] ✅ Dashboard verified

@@ -1,0 +1,1 @@
+[2026-06-09T07:21:15.627Z] [INFO] [LoginPage] Navigating to: /admin/authentication

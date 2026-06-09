@@ -1,0 +1,31 @@
+[2026-06-09T07:21:03.042Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T07:21:05.523Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:05.543Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:05.569Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:06.513Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:06.551Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:06.576Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:07.494Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:07.568Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:07.597Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:08.526Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:08.581Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:08.620Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:09.511Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:09.545Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:09.562Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:10.445Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:10.482Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:10.498Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:11.391Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:11.423Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:11.442Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:12.324Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:12.354Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:12.378Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:13.256Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:13.286Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:13.310Z] [INFO] [LoginPage] Action: click | Target: Login button
+[2026-06-09T07:21:14.196Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:14.248Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:14.273Z] [INFO] [LoginPage] Action: click | Target: Login button

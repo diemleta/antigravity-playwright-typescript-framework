@@ -1,0 +1,5 @@
+[2026-06-09T07:20:58.599Z] [INFO] [LoginPage] Navigating to: /admin/authentication
+[2026-06-09T07:21:00.893Z] [INFO] [LoginPage] Tampering CSRF token: invalid_csrf_token_1780989660
+[2026-06-09T07:21:00.900Z] [INFO] [LoginPage] Action: fill "admin@example.com" | Target: Email input
+[2026-06-09T07:21:00.916Z] [INFO] [LoginPage] Action: fill "********" | Target: Password input
+[2026-06-09T07:21:00.932Z] [INFO] [LoginPage] Action: click | Target: Login button

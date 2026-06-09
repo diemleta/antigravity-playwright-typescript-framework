@@ -1,0 +1,1 @@
+[TC_021] [KNOWN SECURITY BUG] App tiết lộ thông tin email: 'Email not found'

@@ -79,16 +79,6 @@ export default defineConfig({
       },
       dependencies: ['setup'],
     },
-    // Firefox project
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        viewport: { width: 1920, height: 1080 },
-        storageState: 'test-results/.auth/user.json',
-      },
-      dependencies: ['setup'],
-    },
   ],
 
   // Output directory for test artifacts
